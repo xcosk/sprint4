@@ -120,7 +120,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 	default:
 		// Если тип активности неизвестен - возвращаем ошибку
 		log.Printf("Неизвестный тип тренировки: %s", activ)
-		return "", fmt.Errorf("Неизвестный тип тренировки: %s", activ)
+		return "", fmt.Errorf("неизвестный тип тренировки: %s", activ)
 	}
 
 	if err != nil {
