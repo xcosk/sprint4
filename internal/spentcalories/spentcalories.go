@@ -18,8 +18,6 @@ const (
 	walkingCaloriesCoefficient = 0.5  // коэффициент для расчета калорий при ходьбе
 )
 
-// parseTraining парсит строку с данными тренировки
-// Возвращает: количество шагов, тип активности, продолжительность тренировки и ошибку
 func parseTraining(data string) (int, string, time.Duration, error) {
 	// Разделяем строку по запятым
 	delstr := strings.Split(data, ",")
@@ -63,8 +61,6 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 	return steps, activ, duration, nil
 }
 
-// distance рассчитывает пройденную дистанцию в километрах
-// на основе количества шагов и роста пользователя
 func distance(steps int, height float64) float64 {
 	// Рассчитываем длину шага исходя из роста
 	stridelength := height * stepLengthCoefficient
@@ -73,8 +69,6 @@ func distance(steps int, height float64) float64 {
 	return distance
 }
 
-// meanSpeed рассчитывает среднюю скорость в км/ч
-// на основе количества шагов, роста и продолжительности тренировки
 func meanSpeed(steps int, height float64, duration time.Duration) float64 {
 	// Проверяем что продолжительность положительная
 	if duration <= 0 {
@@ -95,8 +89,6 @@ func meanSpeed(steps int, height float64, duration time.Duration) float64 {
 	return distance / durationHours
 }
 
-// TrainingInfo обрабатывает данные тренировки и возвращает форматированную информацию
-// о тренировке: тип, длительность, дистанцию, скорость и потраченные калории
 func TrainingInfo(data string, weight, height float64) (string, error) {
 	// Проверяем корректность веса и роста
 	if weight <= 0 {
@@ -143,8 +135,6 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 	return finish, nil
 }
 
-// RunningSpentCalories рассчитывает количество калорий, потраченных при беге
-// на основе количества шагов, веса, роста и продолжительности тренировки
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// Проверяем корректность входных параметров
 	if weight <= 0 {
@@ -170,8 +160,6 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 	return calories, nil
 }
 
-// WalkingSpentCalories рассчитывает количество калорий, потраченных при ходьбе
-// на основе количества шагов, веса, роста и продолжительности тренировки
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// Проверяем корректность входных параметров
 	if weight <= 0 {

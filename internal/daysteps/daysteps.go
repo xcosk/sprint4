@@ -11,13 +11,12 @@ import (
 
 // Константы для расчетов дистанции
 const (
-	stepLength = 0.65 // средняя длина одного шага в метрах
-	mInKm      = 1000 // количество метров в одном километре
+	// Длина одного шага в метрах
+	stepLength = 0.65
+	// Количество метров в одном километре
+	mInKm = 1000
 )
 
-// parsePackage парсит строку с данными о шагах и продолжительности
-// Формат данных: "количество_шагов,продолжительность"
-// Возвращает: количество шагов, продолжительность и ошибку
 func parsePackage(data string) (int, time.Duration, error) {
 	delstr := strings.Split(data, ",")
 	if len(delstr) != 2 {
@@ -61,8 +60,6 @@ func parsePackage(data string) (int, time.Duration, error) {
 	return steps, duration, nil
 }
 
-// DayActionInfo обрабатывает данные о дневной активности и возвращает форматированную информацию
-// о пройденных шагах, дистанции и потраченных калориях
 func DayActionInfo(data string, weight, height float64) string {
 	// Парсим данные о шагах и продолжительности
 	steps, duration, err := parsePackage(data)
